@@ -12,16 +12,16 @@ function setup(plugin, imports, register) {
   cmCssLink.setAttribute('href', "/static/hive-editor-text-codemirror/static/codemirror.css")
   document.head.appendChild(cmCssLink)
 
-  editor.registerEditor('text', function*() {
-    var editor = document.querySelector('#editor')
+  editor.registerEditor('CodeMirror', 'text', 'An extensible and performant code editor'
+  , function*(editorEl) {
     var cm = CodeMirror(function(el) {
-      editor.appendChild(el)
-      
+      editorEl.appendChild(el)
+
       el.style['height'] = '100%'
       el.style['width'] = '100%'
     })
 
-    editor.style['height'] = '100%'
+    editorEl.style['height'] = '100%'
     document.body.style['position'] = 'absolute'
     document.body.style['bottom'] =
     document.body.style['top'] =
