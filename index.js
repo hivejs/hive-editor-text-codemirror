@@ -9,8 +9,8 @@ function setup(plugin, imports, register) {
   var ot = imports.ot
 
   assets.registerModule(path.join(__dirname, 'client.js'))
-  assets.registerStaticDir(path.join(__dirname, 'static'))
-  
+  assets.registerStylesheet(path.join(__dirname, 'static/codemirror.css'))
+
   ot.registerOTType('text', textOT)
 
   register()

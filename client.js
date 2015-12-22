@@ -7,11 +7,6 @@ module.exports.provides = []
 function setup(plugin, imports, register) {
   var editor = imports.editor
 
-  var cmCssLink = document.createElement('link')
-  cmCssLink.setAttribute('rel', "stylesheet")
-  cmCssLink.setAttribute('href', "/static/hive-editor-text-codemirror/static/codemirror.css")
-  document.head.appendChild(cmCssLink)
-
   editor.registerEditor('CodeMirror', 'text', 'An extensible and performant code editor'
   , function*(editorEl) {
     var cm = CodeMirror(function(el) {
