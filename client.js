@@ -8,7 +8,7 @@ function setup(plugin, imports, register) {
   var editor = imports.editor
 
   editor.registerEditor('CodeMirror', 'text', 'An extensible and performant code editor'
-  , function*(editorEl) {
+  , function(editorEl) {
     var cm = CodeMirror(function(el) {
       editorEl.appendChild(el)
 
@@ -17,11 +17,6 @@ function setup(plugin, imports, register) {
     })
 
     editorEl.style['height'] = '100%'
-    document.body.style['position'] = 'absolute'
-    document.body.style['bottom'] =
-    document.body.style['top'] =
-    document.body.style['left'] =
-    document.body.style['right'] = '0'
 
     return bindCodemirror(cm)
   })

@@ -2,14 +2,14 @@ var path = require('path')
   , textOT = require('ot-text').type
 
 module.exports = setup
-module.exports.consumes = ['assets', 'ot']
+module.exports.consumes = ['ui', 'ot']
 
 function setup(plugin, imports, register) {
-  var assets = imports.assets
+  var ui = imports.ui
   var ot = imports.ot
 
-  assets.registerModule(path.join(__dirname, 'client.js'))
-  assets.registerStylesheet(path.join(__dirname, 'static/codemirror.css'))
+  ui.registerModule(path.join(__dirname, 'client.js'))
+  ui.registerStylesheet(path.join(__dirname, 'static/codemirror.css'))
 
   ot.registerOTType('text', textOT)
 
