@@ -18,7 +18,7 @@ function setup(plugin, imports, register) {
 
     editorEl.style['height'] = '100%'
 
-    return bindCodemirror(cm)
+    return Promise.resolve(bindCodemirror(cm))
   })
   register()
 }
