@@ -27,18 +27,18 @@ function setup(plugin, imports, register) {
 
   editor.registerEditor('CodeMirror', 'text', 'An extensible and performant code editor'
   , function(editorEl) {
+    var cmEl
     var cm = CodeMirror(function(el) {
       editorEl.appendChild(el)
-
       el.style['height'] = '100%'
-      el.style['width'] = '100%'
+      cmEl = el
     }, ui.store.getState().editorTextCodemirror)
 
     editorEl.style['height'] = '100%'
 
     var tree = render(ui.store, ui.config)
       , root = vdom.create(tree)
-    editorEl.appendChild(root)
+    cmEl.appendChild(root)
 
     ui.store.subscribe(_ => {
       var state = ui.store.getState()
