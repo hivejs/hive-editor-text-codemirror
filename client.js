@@ -5,13 +5,15 @@ var CodeMirror = require('codemirror')
 
 const SET_MODE = 'EDITORTEXTCODEMIRROR_SET_MODE'
 const TOGGLE_LINENUMBERS = 'EDITORTEXTCODEMIRROR_TOGGLE_LINENUMBERS'
+const SET_LINENUMBERS = 'EDITORTEXTCODEMIRROR_SET_LINENUMBERS'
 
 module.exports = setup
-module.exports.consumes = ['ui', 'editor']
+module.exports.consumes = ['ui', 'editor', 'settings']
 module.exports.provides = []
 function setup(plugin, imports, register) {
   var ui = imports.ui
     , editor = imports.editor
+    , settings = imports.settings
 
   ui.reduxReducerMap.editorTextCodemirror = reducer
   function reducer(state, action) {
@@ -22,11 +24,27 @@ function setup(plugin, imports, register) {
     if(TOGGLE_LINENUMBERS === action.type) {
       return {...state, lineNumbers: !state.lineNumbers}
     }
+    if(SET_LINENUMBERS === action.type) {
+      return {...state, lineNumbers: action.payload}
+    }
     return state
   }
 
   editor.registerEditor('CodeMirror', 'text', 'An extensible and performant code editor'
   , function(editorEl) {
+    // Overtake settings
+    setImmediate(function() {
+      ui.store.dispatch(action_setLinenumbers(
+        settings.getForUserDocument('editorTextCodemirror:lineNumbers')
+      || settings.getForDocument('editorTextCodemirror:lineNumbers')
+      ))
+
+      ui.store.dispatch(action_setMode(
+        settings.getForUserDocument('editorTextCodemirror:mode')
+      || settings.getForDocument('editorTextCodemirror:mode')
+      ))
+    })
+
     var cmEl
     var cm = CodeMirror(function(el) {
       editorEl.appendChild(el)
@@ -57,7 +75,87 @@ function setup(plugin, imports, register) {
 
     return Promise.resolve(bindCodemirror(cm))
   })
+
+
+  // Document Settings
+
+  settings.onRenderDocumentSettings((children) => {
+    if(ui.store.getState().editor.document.type !== 'text') return
+
+    children.push(
+      renderlineNumberSetting(settings.getForDocument('editorTextCodemirror:lineNumbers')
+      , evt => {
+          ui.store.dispatch(settings.action_setForDocument({
+            'editorTextCodemirror:lineNumbers': evt.currentTarget.checked
+          }))
+        }
+      )
+    )
+    children.push(
+      renderModeSetting(settings.getForDocument('editorTextCodemirror:mode')
+      , evt => {
+          ui.store.dispatch(settings.action_setForDocument({
+            'editorTextCodemirror:mode': evt.currentTarget.value
+          }))
+        }
+      )
+    )
+  })
+
+  settings.onRenderUserDocumentSettings((children) => {
+    if(ui.store.getState().editor.document.type !== 'text') return
+
+    children.push(
+      renderlineNumberSetting(settings.getForUserDocument('editorTextCodemirror:lineNumbers')
+      , evt => {
+          ui.store.dispatch(settings.action_setForUserDocument({
+            'editorTextCodemirror:lineNumbers': evt.currentTarget.checked
+          }))
+        }
+      )
+    )
+    children.push(
+      renderModeSetting(settings.getForUserDocument('editorTextCodemirror:mode')
+      , evt => {
+          ui.store.dispatch(settings.action_setForUserDocument({
+            'editorTextCodemirror:mode': evt.currentTarget.value
+          }))
+        }
+      )
+    )
+  })
+
+  function renderlineNumberSetting(checked, cb) {
+    return h('li.list-group-item', [
+      h('input', {
+        type: 'checkbox'
+      , 'ev-change': cb
+      , checked
+      })
+    , 'Show line numbers'
+    ])
+  }
+
+  function renderModeSetting(currentMode, cb) {
+    return h('li.list-group-item', [
+      'Syntax highlighting '
+    , h('select'
+      , { 'ev-change': cb, value: currentMode }
+      , [h('option', {value: ''}, 'Select a language')]
+        .concat(ui.config.editorTextCodemirror.modes.map(mode => {
+          return h('option'
+          , {value: mode, attributes: currentMode == mode? {selected: true} : {}}
+          , mode)
+        }))
+      )
+    ])
+  }
+
   register()
+}
+
+function action_setLinenumbers(value) {
+  return {type: SET_LINENUMBERS, payload: value}
 }
 
 function action_toggleLinenumbers() {
