@@ -81,73 +81,65 @@ function setup(plugin, imports, register) {
 
   settings.onRenderDocumentSettings((children) => {
     if(ui.store.getState().editor.document.type !== 'text') return
-
-    children.push(
-      renderlineNumberSetting(settings.getForDocument('editorTextCodemirror:lineNumbers')
-      , evt => {
-          ui.store.dispatch(settings.action_setForDocument({
-            'editorTextCodemirror:lineNumbers': evt.currentTarget.checked
-          }))
-        }
-      )
-    )
-    children.push(
-      renderModeSetting(settings.getForDocument('editorTextCodemirror:mode')
-      , evt => {
-          ui.store.dispatch(settings.action_setForDocument({
-            'editorTextCodemirror:mode': evt.currentTarget.value
-          }))
-        }
-      )
-    )
+    children.push(renderSettings(ui.store
+    , settings.getForDocument.bind(settings), settings.action_setForDocument.bind(settings)))
   })
 
   settings.onRenderUserDocumentSettings((children) => {
     if(ui.store.getState().editor.document.type !== 'text') return
-
-    children.push(
-      renderlineNumberSetting(settings.getForUserDocument('editorTextCodemirror:lineNumbers')
-      , evt => {
-          ui.store.dispatch(settings.action_setForUserDocument({
-            'editorTextCodemirror:lineNumbers': evt.currentTarget.checked
-          }))
-        }
-      )
-    )
-    children.push(
-      renderModeSetting(settings.getForUserDocument('editorTextCodemirror:mode')
-      , evt => {
-          ui.store.dispatch(settings.action_setForUserDocument({
-            'editorTextCodemirror:mode': evt.currentTarget.value
-          }))
-        }
-      )
-    )
+    children.push(renderSettings(ui.store
+    , settings.getForUserDocument.bind(settings), settings.action_setForUserDocument.bind(settings)))
   })
+
+  function renderSettings(store, getSetting, actionSave) {
+    return h('div',[
+      h('h4', 'Codemirror')
+    , h('ul.list-group', [
+        renderlineNumberSetting(getSetting('editorTextCodemirror:lineNumbers')
+        , evt => {
+            ui.store.dispatch(actionSave({
+              'editorTextCodemirror:lineNumbers': evt.currentTarget.checked
+            }))
+          }
+        )
+      , renderModeSetting(getSetting('editorTextCodemirror:mode')
+        , evt => {
+            ui.store.dispatch(actionSave({
+              'editorTextCodemirror:mode': evt.currentTarget.value
+            }))
+          }
+        )
+      ])
+    ])
+  }
 
   function renderlineNumberSetting(checked, cb) {
     return h('li.list-group-item', [
-      h('input', {
-        type: 'checkbox'
-      , 'ev-change': cb
-      , checked
-      })
-    , 'Show line numbers'
+      h('label', [
+        h('input', {
+          type: 'checkbox'
+        , 'ev-change': cb
+        , checked
+        })
+      , ' Show line numbers'
+      ])
     ])
   }
 
   function renderModeSetting(currentMode, cb) {
     return h('li.list-group-item', [
-      'Syntax highlighting '
-    , h('select'
-      , { 'ev-change': cb, value: currentMode }
-      , [h('option', {value: ''}, 'Select a language')]
-        .concat(ui.config.editorTextCodemirror.modes.map(mode => {
-          return h('option'
-          , {value: mode, attributes: currentMode == mode? {selected: true} : {}}
-          , mode)
-        }))
-      )
+      h('label', [
+        'Syntax highlighting: '
+      , h('select'
+        , { 'ev-change': cb, value: currentMode }
+        , [h('option', {value: ''}, 'Select a language')]
+          .concat(ui.config.editorTextCodemirror.modes.map(mode => {
+            return h('option'
+            , {value: mode, attributes: currentMode == mode? {selected: true} : {}}
+            , mode)
+          }))
+        )
+      ])
     ])
   }
 
