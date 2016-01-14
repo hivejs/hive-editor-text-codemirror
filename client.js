@@ -33,16 +33,25 @@ function setup(plugin, imports, register) {
   editor.registerEditor('CodeMirror', 'text', 'An extensible and performant code editor'
   , function(editorEl) {
     // Overtake settings
-    setImmediate(function() {
-      ui.store.dispatch(action_setLinenumbers(
-        settings.getForUserDocument('editorTextCodemirror:lineNumbers')
-      || settings.getForDocument('editorTextCodemirror:lineNumbers')
-      ))
+    var user, document
+    ui.store.subscribe(function() {
+      var state = ui.store.getState()
+      if(deepEqual(user, state.session.user) && deepEqual(document, state.editor.document)) return
 
-      ui.store.dispatch(action_setMode(
-        settings.getForUserDocument('editorTextCodemirror:mode')
-      || settings.getForDocument('editorTextCodemirror:mode')
-      ))
+      setImmediate(_=> {
+        ui.store.dispatch(action_setLinenumbers(
+          settings.getForUserDocument('editorTextCodemirror:lineNumbers')
+        || settings.getForDocument('editorTextCodemirror:lineNumbers')
+        ))
+
+        ui.store.dispatch(action_setMode(
+          settings.getForUserDocument('editorTextCodemirror:mode')
+        || settings.getForDocument('editorTextCodemirror:mode')
+        ))
+      })
+
+      document = state.editor.document
+      user = state.session.user
     })
 
     var cmEl
@@ -54,17 +63,8 @@ function setup(plugin, imports, register) {
 
     editorEl.style['height'] = '100%'
 
-    var tree = render(ui.store, ui.config)
-      , root = vdom.create(tree)
-    cmEl.appendChild(root)
-
     ui.store.subscribe(_ => {
       var state = ui.store.getState()
-
-      // update controls
-      var newtree = render(ui.store, ui.config)
-      vdom.patch(root, vdom.diff(tree, newtree))
-
       if(cm.getOption('mode') != state.editorTextCodemirror.mode) {
         cm.setOption('mode', state.editorTextCodemirror.mode)
       }
@@ -158,24 +158,7 @@ function action_setMode(mode) {
   return {type: SET_MODE, payload: mode}
 }
 
-function render(store, config) {
-  var state = store.getState().editorTextCodemirror
-  return h('div.EditorTextCodemirror__controls', [
-    h('a.EditorTextCodemirror__controls__toggleLinenumbers'
-    , { href: 'javascript:void(0)'
-      , 'ev-click': evt => store.dispatch(action_toggleLinenumbers())
-      }
-    , state.lineNumbers? 'Line numbers on' : 'line numbers off')
-  , ' '
-  , h('select.EditorTextCodemirror__controls__selectMode'
-    , { 'ev-change': evt => store.dispatch(action_setMode(evt.currentTarget.value))
-      }
-    , [h('option', {value: ''}, 'Select a language')]
-      .concat(config.editorTextCodemirror.modes.map(mode => {
-        return h('option'
-        , {value: mode, attributes: state.mode == mode? {selected: true} : {}}
-        , mode)
-      }))
-    )
-  ])
+
+function deepEqual(obj1, obj2) {
+  return JSON.stringify(obj1) === JSON.stringify(obj2)
 }
