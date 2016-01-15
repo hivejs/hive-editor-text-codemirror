@@ -13,7 +13,7 @@ function setup(plugin, imports, register) {
   ui.registerStylesheet(path.join(__dirname, 'static/codemirror.css'))
   ui.registerStylesheet(path.join(__dirname, 'static/index.css'))
 
-  ot.registerOTType('text', textOT)
+  ot.registerOTType('text/plain', textOT)
 
   fs.readdir('./node_modules/codemirror/mode', function(er, files) {
     if(er) return register(er)

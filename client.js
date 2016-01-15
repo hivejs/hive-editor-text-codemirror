@@ -30,7 +30,7 @@ function setup(plugin, imports, register) {
     return state
   }
 
-  editor.registerEditor('CodeMirror', 'text', 'An extensible and performant code editor'
+  editor.registerEditor('CodeMirror', 'text/plain', 'An extensible and performant code editor'
   , function(editorEl) {
     // Overtake settings
     settings.onChange(_=> {
@@ -71,13 +71,13 @@ function setup(plugin, imports, register) {
   // Document Settings
 
   settings.onRenderDocumentSettings((children) => {
-    if(ui.store.getState().editor.document.type !== 'text') return
+    if(ui.store.getState().editor.document.type !== 'text/plain') return
     children.push(renderSettings(ui.store
     , settings.getForDocument.bind(settings), settings.action_setForDocument.bind(settings)))
   })
 
   settings.onRenderUserDocumentSettings((children) => {
-    if(ui.store.getState().editor.document.type !== 'text') return
+    if(ui.store.getState().editor.document.type !== 'text/plain') return
     children.push(renderSettings(ui.store
     , settings.getForUserDocument.bind(settings), settings.action_setForUserDocument.bind(settings)))
   })
