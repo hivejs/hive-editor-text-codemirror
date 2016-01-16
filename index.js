@@ -3,15 +3,15 @@ var path = require('path')
   , fs = require('fs')
 
 module.exports = setup
-module.exports.consumes = ['ui', 'ot']
+module.exports.consumes = ['ui', 'ot', 'importexport']
 
 function setup(plugin, imports, register) {
   var ui = imports.ui
-  var ot = imports.ot
+    , ot = imports.ot
+    , importexport = imports.importexport
 
   ui.registerModule(path.join(__dirname, 'client.js'))
   ui.registerStylesheet(path.join(__dirname, 'static/codemirror.css'))
-  ui.registerStylesheet(path.join(__dirname, 'static/index.css'))
 
   ot.registerOTType('text/plain', textOT)
 
@@ -30,6 +30,11 @@ function setup(plugin, imports, register) {
       modes: modes
     })
 
+  })
+
+  importexport.registerExportProvider('text/plain', 'text/plain'
+  , function* (document, snapshot) {
+    return snapshot.contents
   })
 
   register()
