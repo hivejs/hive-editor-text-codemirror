@@ -49,7 +49,7 @@ function setup(plugin, imports, register) {
     if(snapshot.contents.length)
       changes = [snapshot.contents.length, '\n'+data.toString('utf8')]
     else
-      changes = [data.toString('utf8')]]
+      changes = [data.toString('utf8')]
 
     var gulfDoc = yield sync.getDocument(document.id)
     yield function(cb) {
