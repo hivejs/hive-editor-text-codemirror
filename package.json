@@ -7,7 +7,7 @@
     "gulf": "3.x",
     "gulf-codemirror": "3.x",
     "codemirror": "5.x",
-    "virtual-dom": "2.x"
+    "virtual-dom": "2.x",
     "ot-text": "*"
   },
   "scripts": {

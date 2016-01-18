@@ -39,7 +39,7 @@ function setup(plugin, imports, register) {
     return snapshot.contents
   })
 
-  importexport.registerImportProvider('text/plain', 'text/plain'
+  importexport.registerImportProvider('text/plain', 'text/*'
   , function* (document, user, data) {
     var snapshot = yield orm.collections.snapshot
       .findOne({id: document.latestSnapshot})
