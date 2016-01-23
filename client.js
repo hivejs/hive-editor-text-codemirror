@@ -42,8 +42,9 @@ function setup(plugin, imports, register) {
     // Overtake settings
     settings.onChange(_=> {
       ui.store.dispatch(action_setLinenumbers(
+        'undefined' !== typeof settings.getForUserDocument('editorTextCodemirror:lineNumbers')?
         settings.getForUserDocument('editorTextCodemirror:lineNumbers')
-      || settings.getForDocument('editorTextCodemirror:lineNumbers')
+      : settings.getForDocument('editorTextCodemirror:lineNumbers')
       ))
 
       ui.store.dispatch(action_setMode(
