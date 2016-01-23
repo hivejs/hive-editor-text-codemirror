@@ -22,6 +22,7 @@ function setup(plugin, imports, register) {
         mode: null
       , lineNumbers: false
       , lineSeparator: '\r\n'
+      , lineWrapping: true
       }
     }
     if(SET_MODE === action.type) {
