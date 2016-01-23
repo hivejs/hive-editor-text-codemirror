@@ -17,7 +17,13 @@ function setup(plugin, imports, register) {
 
   ui.reduxReducerMap.editorTextCodemirror = reducer
   function reducer(state, action) {
-    if(!state) return {mode: null, lineNumbers: false}
+    if(!state) {
+      return {
+        mode: null
+      , lineNumbers: false
+      , lineSeparator: '\r\n'
+      }
+    }
     if(SET_MODE === action.type) {
       return {...state, mode: action.payload}
     }
