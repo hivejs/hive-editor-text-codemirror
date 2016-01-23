@@ -2,6 +2,9 @@ var CodeMirror = require('codemirror')
   , bindCodemirror = require('gulf-codemirror')
   , vdom = require('virtual-dom')
   , h = vdom.h
+require('codemirror/mode/meta')
+
+window.CodeMirror = CodeMirror
 
 const SET_MODE = 'EDITORTEXTCODEMIRROR_SET_MODE'
 const TOGGLE_LINENUMBERS = 'EDITORTEXTCODEMIRROR_TOGGLE_LINENUMBERS'
@@ -23,10 +26,14 @@ function setup(plugin, imports, register) {
       , lineNumbers: false
       , lineSeparator: '\r\n'
       , lineWrapping: true
+      , loadedModes: {}
       }
     }
     if(SET_MODE === action.type) {
-      return {...state, mode: action.payload}
+      return {...state
+      , mode: action.payload
+      , loadedModes: {...state.loadedModes, [action.payload]: true}
+      }
     }
     if(TOGGLE_LINENUMBERS === action.type) {
       return {...state, lineNumbers: !state.lineNumbers}
@@ -37,21 +44,33 @@ function setup(plugin, imports, register) {
     return state
   }
 
+  ui.reduxMiddleware.push(function(store) {
+    return next => action => {
+      if(SET_MODE === action.type) {
+        var mode = action.payload
+        if(!store.getState().editorTextCodemirror.loadedModes[mode]) {
+          loadMode(mode, function() {
+            next(action)
+          })
+          return
+        }
+      }
+      return next(action)
+    }
+  })
+
+  function loadMode(mode, cb) {
+    var script = document.createElement('script')
+    script.setAttribute('src', ui.baseURL+'/static/codemirror/mode/'+mode+'/'+mode+'.js')
+    script.addEventListener('load', cb)
+    document.body.appendChild(script)
+  }
+
   editor.registerEditor('CodeMirror', 'text/plain', 'An extensible and performant code editor'
   , function(editorEl) {
     // Overtake settings
-    settings.onChange(_=> {
-      ui.store.dispatch(action_setLinenumbers(
-        'undefined' !== typeof settings.getForUserDocument('editorTextCodemirror:lineNumbers')?
-        settings.getForUserDocument('editorTextCodemirror:lineNumbers')
-      : settings.getForDocument('editorTextCodemirror:lineNumbers')
-      ))
-
-      ui.store.dispatch(action_setMode(
-        settings.getForUserDocument('editorTextCodemirror:mode')
-      || settings.getForDocument('editorTextCodemirror:mode')
-      ))
-    })
+    settings.onChange(updateFromSettings)
+    updateFromSettings()
 
     var cmEl
     var cm = CodeMirror(function(el) {
@@ -74,6 +93,19 @@ function setup(plugin, imports, register) {
 
     return Promise.resolve(bindCodemirror(cm))
   })
+
+  function updateFromSettings() {
+    ui.store.dispatch(action_setLinenumbers(
+      'undefined' !== typeof settings.getForUserDocument('editorTextCodemirror:lineNumbers')?
+      settings.getForUserDocument('editorTextCodemirror:lineNumbers')
+    : settings.getForDocument('editorTextCodemirror:lineNumbers')
+    ))
+
+    ui.store.dispatch(action_setMode(
+      settings.getForUserDocument('editorTextCodemirror:mode')
+    || settings.getForDocument('editorTextCodemirror:mode')
+    ))
+  }
 
 
   // Document Settings
@@ -131,11 +163,14 @@ function setup(plugin, imports, register) {
         'Syntax highlighting: '
       , h('select'
         , { 'ev-change': cb, value: currentMode }
-        , [h('option', {value: ''}, 'Select a language')]
-          .concat(ui.config.editorTextCodemirror.modes.map(mode => {
+        , [h('option', {
+            value: ''
+          , attributes: !currentMode? {selected: true} : {}
+          }, 'Select a language')]
+          .concat(CodeMirror.modeInfo.map(mode => {
             return h('option'
-            , {value: mode, attributes: currentMode == mode? {selected: true} : {}}
-            , mode)
+            , {value: mode.mode, attributes: currentMode == mode.mode? {selected: true} : {}}
+            , mode.name)
           }))
         )
       ])
