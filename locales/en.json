@@ -1,0 +1,9 @@
+{
+  "en": {
+    "editor-text-codemirror": {
+      "show-line-numbers": "Show line numbers"
+    , "syntax-highlighting": "Syntax highlighting:"
+    , "select-mode": "Select a language"
+    }
+  }
+}

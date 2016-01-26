@@ -152,7 +152,7 @@ function setup(plugin, imports, register) {
         , 'ev-change': cb
         , checked
         })
-      , ' Show line numbers'
+      , ' '+ui._('editor-text-codemirror/show-line-numbers')()
       ])
     ])
   }
@@ -160,13 +160,13 @@ function setup(plugin, imports, register) {
   function renderModeSetting(currentMode, cb) {
     return h('li.list-group-item', [
       h('label', [
-        'Syntax highlighting: '
+        ui._('editor-text-codemirror/syntax-highlighting')()+' '
       , h('select'
         , { 'ev-change': cb, value: currentMode }
         , [h('option', {
             value: ''
           , attributes: !currentMode? {selected: true} : {}
-          }, 'Select a language')]
+          }, ui._('editor-text-codemirror/select-mode')())]
           .concat(CodeMirror.modeInfo.map(mode => {
             return h('option'
             , {value: mode.mode, attributes: currentMode == mode.mode? {selected: true} : {}}
