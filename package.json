@@ -4,8 +4,8 @@
   "description": "Plaintext editor for hive.js",
   "main": "index.js",
   "dependencies": {
-    "gulf": "3.x",
-    "gulf-codemirror": "3.x",
+    "gulf": "4.x",
+    "gulf-codemirror": "4.x",
     "codemirror": "5.x",
     "virtual-dom": "2.x",
     "ot-text": "*"
