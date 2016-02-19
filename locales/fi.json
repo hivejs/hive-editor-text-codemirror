@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nike"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Näytä rivinumerot",
+		"syntax-highlighting": "Syntaksin korostus:",
+		"select-mode": "Valitse kieli"
+	}
+}

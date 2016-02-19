@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Siebrand"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Regelnummer weergeven",
+		"syntax-highlighting": "Syntaxis uitlichten:",
+		"select-mode": "Selecteer een taal"
+	}
+}

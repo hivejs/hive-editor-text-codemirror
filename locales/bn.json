@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aftabuzzaman"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "লাইনের নম্বর দেখান",
+		"syntax-highlighting": "সিনট্যাক্স আলোকপাতকরণ:",
+		"select-mode": "একটি ভাষা নির্বাচন করুন"
+	}
+}

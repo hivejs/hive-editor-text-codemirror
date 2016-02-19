@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Metalhead64"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Zeilennummern anzeigen",
+		"syntax-highlighting": "Syntaxhervorhebung:",
+		"select-mode": "Wähle eine Sprache aus"
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Mostra i numeri di riga",
+		"syntax-highlighting": "Evidenziazione della sintassi:",
+		"select-mode": "Seleziona una lingua"
+	}
+}

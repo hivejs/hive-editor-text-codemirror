@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "显示行数",
+		"syntax-highlighting": "语法高亮：",
+		"select-mode": "选择语言"
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Macofe"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Mostrar números de línea",
+		"syntax-highlighting": "Resaltado de sintaxis:",
+		"select-mode": "Selecciona un idioma"
+	}
+}

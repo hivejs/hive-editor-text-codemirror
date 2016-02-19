@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Показывать номера строк",
+		"syntax-highlighting": "Подсветка синтаксиса:",
+		"select-mode": "Выберите язык"
+	}
+}

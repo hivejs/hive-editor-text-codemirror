@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Afficher les numéros de ligne",
+		"syntax-highlighting": "Colorisation syntaxique :",
+		"select-mode": "Sélectionner une langue"
+	}
+}
