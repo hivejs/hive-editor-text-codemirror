@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Visa radnummer",
+		"syntax-highlighting": "Syntaxmarkering:",
+		"select-mode": "Välj ett språk"
+	}
+}
