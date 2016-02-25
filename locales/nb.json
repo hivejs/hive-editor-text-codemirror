@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"SuperPotato"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Vis linjenummer",
+		"syntax-highlighting": "Syntaxmarkering:",
+		"select-mode": "Velg et språk"
+	}
+}

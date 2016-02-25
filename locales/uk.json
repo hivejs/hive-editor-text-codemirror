@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lxlalexlxl"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Показати номери рядків",
+		"syntax-highlighting": "Підсвічування синтаксису",
+		"select-mode": "Виберіть мову"
+	}
+}
