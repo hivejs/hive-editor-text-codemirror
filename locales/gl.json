@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elisardojm"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Mostrar os números de liña",
+		"syntax-highlighting": "Resaltado de sintaxe:",
+		"select-mode": "Seleccionar unha lingua"
+	}
+}
