@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "行番号を表示",
+		"syntax-highlighting": "構文強調:",
+		"select-mode": "言語を選択"
+	}
+}

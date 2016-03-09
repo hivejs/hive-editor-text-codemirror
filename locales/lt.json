@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Zygimantus"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Rodyti eilučių numerius",
+		"syntax-highlighting": "Sintaksės išryškinimas:",
+		"select-mode": "Pasirinkite kalbą"
+	}
+}
