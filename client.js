@@ -96,7 +96,7 @@ function setup(plugin, imports, register) {
 
   function updateFromSettings() {
     ui.store.dispatch(action_setLinenumbers(
-      'undefined' !== typeof settings.getForUserDocument('editorTextCodemirror:lineNumbers')?
+      null !== settings.getForUserDocument('editorTextCodemirror:lineNumbers')?
       settings.getForUserDocument('editorTextCodemirror:lineNumbers')
     : settings.getForDocument('editorTextCodemirror:lineNumbers')
     ))
