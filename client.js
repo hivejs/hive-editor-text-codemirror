@@ -67,9 +67,9 @@ function setup(plugin, imports, register) {
   }
 
   editor.registerEditor('CodeMirror', 'text/plain', 'An extensible and performant code editor'
-  , function(editorEl) {
+  , function(editorEl, onClose) {
     // Overtake settings
-    settings.onChange(updateFromSettings)
+    var dispose = settings.onChange(updateFromSettings)
     updateFromSettings()
 
     var cmEl
@@ -81,7 +81,7 @@ function setup(plugin, imports, register) {
 
     editorEl.style['height'] = '100%'
 
-    ui.store.subscribe(_ => {
+    var dispose2 = ui.store.subscribe(_ => {
       var state = ui.store.getState()
       if(cm.getOption('mode') != state.editorTextCodemirror.mode) {
         cm.setOption('mode', state.editorTextCodemirror.mode)
@@ -89,6 +89,11 @@ function setup(plugin, imports, register) {
       if(cm.getOption('lineNumbers') != state.editorTextCodemirror.lineNumbers) {
         cm.setOption('lineNumbers', state.editorTextCodemirror.lineNumbers)
       }
+    })
+
+    onClose(() => {
+      dispose()
+      dispose2()
     })
 
     return Promise.resolve(bindCodemirror(cm))
