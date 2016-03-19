@@ -76,6 +76,7 @@ function setup(plugin, imports, register) {
     var cm = CodeMirror(function(el) {
       editorEl.appendChild(el)
       el.style['height'] = '100%'
+      el.style['display'] = 'none' // Keep hidden until init
       cmEl = el
     }, ui.store.getState().editorTextCodemirror)
 
@@ -96,7 +97,13 @@ function setup(plugin, imports, register) {
       dispose2()
     })
 
-    return Promise.resolve(bindCodemirror(cm))
+    var doc = bindCodemirror(cm)
+
+    doc.on('editableInitialized', () => {
+      cmEl.style['display'] = 'block'
+    })
+
+    return Promise.resolve(doc)
   })
 
   function updateFromSettings() {
