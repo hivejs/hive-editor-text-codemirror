@@ -48,7 +48,7 @@ function setup(plugin, imports, register) {
     return next => action => {
       if(SET_MODE === action.type) {
         var mode = action.payload
-        if(!store.getState().editorTextCodemirror.loadedModes[mode]) {
+        if(mode && !store.getState().editorTextCodemirror.loadedModes[mode]) {
           loadMode(mode, function() {
             next(action)
           })
