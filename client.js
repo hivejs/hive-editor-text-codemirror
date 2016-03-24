@@ -24,7 +24,7 @@ function setup(plugin, imports, register) {
       return {
         mode: null
       , lineNumbers: false
-      , lineSeparator: '\r\n'
+      , lineSeparator: null
       , lineWrapping: true
       , loadedModes: {}
       }
