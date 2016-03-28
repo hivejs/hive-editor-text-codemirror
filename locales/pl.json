@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mateon1"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Pokaż numery linii",
+		"syntax-highlighting": "Podświetlanie składni:",
+		"select-mode": "Wybierz język"
+	}
+}
