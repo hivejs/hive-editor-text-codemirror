@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Luk3"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Mostrar número de linhas",
+		"syntax-highlighting": "Coloração de sintaxe:",
+		"select-mode": "Selecione um idioma"
+	}
+}
