@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Янмурза Баки"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Юл номерын күрһәтә",
+		"syntax-highlighting": "Синтаксисты яҡтыртыу",
+		"select-mode": "Тел һайлағыҙ:"
+	}
+}
