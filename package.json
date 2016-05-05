@@ -22,7 +22,7 @@
     "hive.js"
   ],
   "author": "Marcel Klehr <mklehr@gmx.net>",
-  "license": "MIT",
+  "license": "MPL-2.0",
   "bugs": {
     "url": "https://github.com/hivejs/hive-editor-text-codemirror/issues"
   },
