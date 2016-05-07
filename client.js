@@ -14,13 +14,9 @@
  * You should have received a copy of the Mozilla Public License
  * along with this program.  If not, see <https://www.mozilla.org/en-US/MPL/2.0/>.
  */
-var CodeMirror = require('codemirror')
-  , bindCodemirror = require('gulf-codemirror')
+var bindCodemirror = require('gulf-codemirror')
   , vdom = require('virtual-dom')
   , h = vdom.h
-require('codemirror/mode/meta')
-
-window.CodeMirror = CodeMirror
 
 const SET_MODE = 'EDITORTEXTCODEMIRROR_SET_MODE'
 const TOGGLE_LINENUMBERS = 'EDITORTEXTCODEMIRROR_TOGGLE_LINENUMBERS'
@@ -42,13 +38,11 @@ function setup(plugin, imports, register) {
       , lineNumbers: false
       , lineSeparator: null
       , lineWrapping: true
-      , loadedModes: {}
       }
     }
     if(SET_MODE === action.type) {
       return {...state
       , mode: action.payload
-      , loadedModes: {...state.loadedModes, [action.payload]: true}
       }
     }
     if(TOGGLE_LINENUMBERS === action.type) {
@@ -64,62 +58,60 @@ function setup(plugin, imports, register) {
     return next => action => {
       if(SET_MODE === action.type) {
         var mode = action.payload
-        if(mode && !store.getState().editorTextCodemirror.loadedModes[mode]) {
-          loadMode(mode, function() {
-            next(action)
-          })
-          return
+        if(mode) {
+          return ui.requireScript(ui.baseURL+'/static/codemirror/mode/'+mode+'/'+mode+'.js')
+          .then(() => next(action))
         }
       }
       return next(action)
     }
   })
 
-  function loadMode(mode, cb) {
-    var script = document.createElement('script')
-    script.setAttribute('src', ui.baseURL+'/static/codemirror/mode/'+mode+'/'+mode+'.js')
-    script.addEventListener('load', cb)
-    document.body.appendChild(script)
-  }
-
   editor.registerEditor('CodeMirror', 'text/plain', 'An extensible and performant code editor'
   , function(editorEl, onClose) {
-    // Overtake settings
-    var dispose = settings.onChange(updateFromSettings)
-    updateFromSettings()
+    return ui.requireScript(ui.baseURL+'/static/build/codemirror.js')
+    .then(() => {
+      var CodeMirror = require('codemirror')
+      require('codemirror/mode/meta')
+      window.CodeMirror = CodeMirror
 
-    var cmEl
-    var cm = CodeMirror(function(el) {
-      editorEl.appendChild(el)
-      el.style['height'] = '100%'
-      el.style['visibility'] = 'hidden' // Keep hidden until init
-      cmEl = el
-    }, ui.store.getState().editorTextCodemirror)
+      // Overtake settings
+      var dispose = settings.onChange(updateFromSettings)
+      updateFromSettings()
 
-    editorEl.style['height'] = '100%'
+      var cmEl
+      var cm = CodeMirror(function(el) {
+        editorEl.appendChild(el)
+        el.style['height'] = '100%'
+        el.style['visibility'] = 'hidden' // Keep hidden until init
+        cmEl = el
+      }, ui.store.getState().editorTextCodemirror)
 
-    var dispose2 = ui.store.subscribe(_ => {
-      var state = ui.store.getState()
-      if(cm.getOption('mode') != state.editorTextCodemirror.mode) {
-        cm.setOption('mode', state.editorTextCodemirror.mode)
-      }
-      if(cm.getOption('lineNumbers') != state.editorTextCodemirror.lineNumbers) {
-        cm.setOption('lineNumbers', state.editorTextCodemirror.lineNumbers)
-      }
+      editorEl.style['height'] = '100%'
+
+      var dispose2 = ui.store.subscribe(_ => {
+        var state = ui.store.getState()
+        if(cm.getOption('mode') != state.editorTextCodemirror.mode) {
+          cm.setOption('mode', state.editorTextCodemirror.mode)
+        }
+        if(cm.getOption('lineNumbers') != state.editorTextCodemirror.lineNumbers) {
+          cm.setOption('lineNumbers', state.editorTextCodemirror.lineNumbers)
+        }
+      })
+
+      onClose(() => {
+        dispose()
+        dispose2()
+      })
+
+      var doc = bindCodemirror(cm)
+
+      doc.on('editableInitialized', () => {
+        cmEl.style['visibility'] = 'visible'
+      })
+
+      return Promise.resolve(doc)
     })
-
-    onClose(() => {
-      dispose()
-      dispose2()
-    })
-
-    var doc = bindCodemirror(cm)
-
-    doc.on('editableInitialized', () => {
-      cmEl.style['visibility'] = 'visible'
-    })
-
-    return Promise.resolve(doc)
   })
 
   function updateFromSettings() {

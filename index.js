@@ -32,6 +32,7 @@ function setup(plugin, imports, register) {
   ui.registerStylesheet(path.join(__dirname, 'static/codemirror.css'))
   ui.registerStaticDir(path.resolve(__dirname,'..', 'codemirror'))
   ui.registerLocaleDir(path.join(__dirname, 'locales'))
+  ui.externalizeModule('codemirror')
 
   ot.registerOTType('text/plain', textOT)
 
