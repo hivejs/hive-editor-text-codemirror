@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "줄 번호 보이기",
+		"syntax-highlighting": "구문 강조:",
+		"select-mode": "언어 선택"
+	}
+}
