@@ -71,24 +71,15 @@ function setup(plugin, imports, register) {
   , function(editorEl, onClose) {
     return ui.requireScript(ui.baseURL+'/static/build/codemirror.js')
     .then(() => {
-      var CodeMirror = require('codemirror')
-      require('codemirror/mode/meta')
-      window.CodeMirror = CodeMirror
-
-      // Overtake settings
+      window.CodeMirror = require('codemirror')
+      return ui.requireScript(ui.baseURL+'/static/codemirror/mode/meta.js')
+    })
+    .then(() => {
+      // Update state on settings changes
       var dispose = settings.onChange(updateFromSettings)
       updateFromSettings()
-
-      var cmEl
-      var cm = CodeMirror(function(el) {
-        editorEl.appendChild(el)
-        el.style['height'] = '100%'
-        el.style['visibility'] = 'hidden' // Keep hidden until init
-        cmEl = el
-      }, ui.store.getState().editorTextCodemirror)
-
-      editorEl.style['height'] = '100%'
-
+      
+      // Update editor on state changes
       var dispose2 = ui.store.subscribe(_ => {
         var state = ui.store.getState()
         if(cm.getOption('mode') != state.editorTextCodemirror.mode) {
@@ -98,6 +89,17 @@ function setup(plugin, imports, register) {
           cm.setOption('lineNumbers', state.editorTextCodemirror.lineNumbers)
         }
       })
+
+      // Initialize editor
+      var cmEl
+      var cm = CodeMirror(function(el) {
+        editorEl.appendChild(el)
+        el.style['height'] = '100%'
+        el.style['visibility'] = 'hidden' // Keep hidden until init
+        cmEl = el
+      }, ui.store.getState().editorTextCodemirror)
+
+      editorEl.style['height'] = '100%'
 
       onClose(() => {
         dispose()
