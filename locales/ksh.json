@@ -6,6 +6,7 @@
 	},
 	"editor-text-codemirror": {
 		"show-line-numbers": "Nommer för Reihje aanzeije",
+		"syntax-highlighting": "Süntax makkehre",
 		"select-mode": "Söhg en Schprohch uß"
 	}
 }
