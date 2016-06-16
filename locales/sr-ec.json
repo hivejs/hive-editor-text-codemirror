@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rancher"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Прикажи број реда",
+		"syntax-highlighting": "Истицање синтаксе:",
+		"select-mode": "Изаберите језик"
+	}
+}
