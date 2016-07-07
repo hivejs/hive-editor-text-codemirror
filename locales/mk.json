@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Прикажувај броеви на редовите",
+		"syntax-highlighting": "Подлекување на синтакса:",
+		"select-mode": "Одберете јазик"
+	}
+}
