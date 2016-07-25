@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "顯示行號",
+		"select-mode": "選擇一個語言"
+	}
+}
