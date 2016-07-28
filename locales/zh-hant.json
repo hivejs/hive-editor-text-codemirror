@@ -6,6 +6,7 @@
 	},
 	"editor-text-codemirror": {
 		"show-line-numbers": "顯示行號",
+		"syntax-highlighting": "語法突顯：",
 		"select-mode": "選擇一個語言"
 	}
 }

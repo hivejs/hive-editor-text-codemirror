@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Muhammad Shuaib"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "سطروں کے نمبر دکھائیں",
+		"syntax-highlighting": "سنٹیکس نمایاں کریں:",
+		"select-mode": "زبان منتخب کریں"
+	}
+}
