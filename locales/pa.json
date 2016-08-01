@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tow"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "ਪੰਕਤੀ ਅੰਕ ਵਿਖਾਓ",
+		"syntax-highlighting": "ਸੰਟੈਕਸ ਉਭਾਰਾ:",
+		"select-mode": "ਭਾਸ਼ਾ ਚੁਣੋ"
+	}
+}

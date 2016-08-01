@@ -6,6 +6,7 @@
 	},
 	"editor-text-codemirror": {
 		"show-line-numbers": "Xeta nımreyan bıasne",
+		"syntax-highlighting": "Rêza belıkerdan",
 		"select-mode": "Zıwan weçine"
 	}
 }
