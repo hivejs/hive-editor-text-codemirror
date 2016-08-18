@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aktron",
+			"Zbyso23"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Zobrazovat čísla řádků",
+		"syntax-highlighting": "Zvýraznění syntaxe:",
+		"select-mode": "Zvolit jazyk"
+	}
+}
