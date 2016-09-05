@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pon44695"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "แสดงสายตัวเลข",
+		"syntax-highlighting": "การเน้นวากยสัมพันธ์ให้เด่น:",
+		"select-mode": "เลือกภาษา"
+	}
+}
