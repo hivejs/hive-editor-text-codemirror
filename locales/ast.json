@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Amosar númberos de llinia",
+		"syntax-highlighting": "Resaltador de sintaxis",
+		"select-mode": "Escoyer llingua"
+	}
+}
