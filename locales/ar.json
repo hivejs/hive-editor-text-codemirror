@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Maroen1990",
+			"ديفيد"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "إظهار خط الأرقام",
+		"syntax-highlighting": "إبراز تركيب:",
+		"select-mode": "اختر اللغة"
+	}
+}
