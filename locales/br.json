@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gwenn-Ael"
+			"Gwenn-Ael",
+			"Fulup"
 		]
 	},
 	"editor-text-codemirror": {
 		"show-line-numbers": "Diskwel an niverennoù linenn",
+		"syntax-highlighting": "Lakaat an ereadurezh war wel :",
 		"select-mode": "Dibab ur yezh"
 	}
 }
