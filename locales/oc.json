@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Afichar los numèros de linha",
+		"syntax-highlighting": "Colorizacion sintaxica :",
+		"select-mode": "Seleccionatz una lenga"
+	}
+}
