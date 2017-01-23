@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"ElangoRamanujam"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "வரிசை எண்களைக் காட்டுக",
+		"select-mode": "ஒரு மொழியைத் தேர்க"
+	}
+}
