@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jagwar"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Haneho laharan'andalana",
+		"syntax-highlighting": "Fandokoana ara-drariteny:",
+		"select-mode": "Hisafidy teny"
+	}
+}

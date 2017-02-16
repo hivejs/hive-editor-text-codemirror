@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Srdjan m"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Prikaži brojeve redova",
+		"syntax-highlighting": "Isticanje sintakse:",
+		"select-mode": "Izaberite jezik"
+	}
+}
