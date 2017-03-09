@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hidayatsrf"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Tampilkan jumlah baris",
+		"syntax-highlighting": "Sorotan sintaks:",
+		"select-mode": "Pilih bahasa"
+	}
+}
