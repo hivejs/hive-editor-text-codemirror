@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Urbalazs",
+			"Wolf Rex"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Sorszámok megjelenítése",
+		"syntax-highlighting": "Szintaxiskiemelés:",
+		"select-mode": "Nyelvválasztás"
+	}
+}
