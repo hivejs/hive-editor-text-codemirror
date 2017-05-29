@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"StanProg"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Показване номерата на редовете",
+		"select-mode": "Изберете език"
+	}
+}
