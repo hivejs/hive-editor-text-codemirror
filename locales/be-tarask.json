@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Red Winged Duck",
+			"Renessaince"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Паказваць нумары радкоў",
+		"syntax-highlighting": "Падсьвятленьне сынтаксу:"
+	}
+}
