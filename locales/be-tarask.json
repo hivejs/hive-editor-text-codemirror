@@ -7,6 +7,7 @@
 	},
 	"editor-text-codemirror": {
 		"show-line-numbers": "Паказваць нумары радкоў",
-		"syntax-highlighting": "Падсьвятленьне сынтаксу:"
+		"syntax-highlighting": "Падсьвятленьне сынтаксу:",
+		"select-mode": "Абярыце мову"
 	}
 }
