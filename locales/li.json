@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ooswesthoesbes"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Toean regelnómmers",
+		"syntax-highlighting": "Syntaxisoetlichting:",
+		"select-mode": "Kees 'n spraok"
+	}
+}
