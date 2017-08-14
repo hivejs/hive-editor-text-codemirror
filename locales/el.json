@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nikosgranturismogt"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Εμφάνιση αρίθμησης γραμμών",
+		"select-mode": "Επιλογή γλώσσας"
+	}
+}
