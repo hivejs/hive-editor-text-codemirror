@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joedalton"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Vis linjenummer",
+		"syntax-highlighting": "syntaksfremhævelse:",
+		"select-mode": "Vælg et sprog"
+	}
+}
