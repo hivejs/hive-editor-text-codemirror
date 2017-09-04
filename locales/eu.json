@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mikel Ibaiba",
+			"Subi"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Erakutsi linea zenbakiak",
+		"syntax-highlighting": "Sintaxiaren nabarmengailua:",
+		"select-mode": "Hautatu hizkuntza"
+	}
+}
