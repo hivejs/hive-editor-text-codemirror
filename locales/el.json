@@ -6,6 +6,7 @@
 	},
 	"editor-text-codemirror": {
 		"show-line-numbers": "Εμφάνιση αρίθμησης γραμμών",
+		"syntax-highlighting": "Επισήμανση σύνταξης:",
 		"select-mode": "Επιλογή γλώσσας"
 	}
 }
