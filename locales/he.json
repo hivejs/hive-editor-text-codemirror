@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"YaronSh"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "הצגת מספרי שורות",
+		"syntax-highlighting": "צביעת תחביר:",
+		"select-mode": "נא לבחור בשפה"
+	}
+}
