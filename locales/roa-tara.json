@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Fà 'ndrucà le numere de linèe",
+		"syntax-highlighting": "Evidenziatore de sindasse",
+		"select-mode": "Scacchie 'a lènghe"
+	}
+}
