@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Athena in Wonderland"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Mostrar número de linhas",
+		"syntax-highlighting": "Realce sintático:",
+		"select-mode": "Selecione uma língua"
+	}
+}
