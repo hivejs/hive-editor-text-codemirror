@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chansey"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Satır numaralarını göster",
+		"syntax-highlighting": "Sözdizimi vurgulama:",
+		"select-mode": "Dili seçin"
+	}
+}
