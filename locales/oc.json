@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cedric31"
+			"Cedric31",
+			"Hulothe"
 		]
 	},
 	"editor-text-codemirror": {
 		"show-line-numbers": "Afichar los numèros de linha",
-		"syntax-highlighting": "Colorizacion sintaxica :",
+		"syntax-highlighting": "Coloracion sintaxica :",
 		"select-mode": "Seleccionatz una lenga"
 	}
 }
