@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"AZISS"
+		]
+	},
+	"editor-text-codemirror": {
+		"show-line-numbers": "Sətirlərin rəqəmini göstərmək",
+		"select-mode": "Dili seçin"
+	}
+}

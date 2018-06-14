@@ -6,6 +6,7 @@
 	},
 	"editor-text-codemirror": {
 		"show-line-numbers": "Показване номерата на редовете",
+		"syntax-highlighting": "Оцветяване на синтаксиса:",
 		"select-mode": "Изберете език"
 	}
 }
