@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robin van der Vliet"
+			"Robin van der Vliet",
+			"Mirin"
 		]
 	},
 	"editor-text-codemirror": {
+		"show-line-numbers": "Montri lininumerojn",
+		"syntax-highlighting": "Sintaksa reliefigado:",
 		"select-mode": "Elekti lingvon"
 	}
 }
